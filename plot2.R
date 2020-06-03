@@ -1,0 +1,7 @@
+emissions_data <- readRDS("summarySCC_PM25.rds")
+class_code <- readRDS("Source_Classification_Code.rds")
+baltimore_data<-subset(emissions_data,emissions_data$fips=="24510")
+year_wise<- aggregate(baltimore_data$Emissions,by=list(year=baltimore_data$year),FUN=sum)
+png(filename = "plot8.png")
+plot(year_wise$year,year_wise$x,type = "l", main="Total Emission in Baltimore City",ylab="Total Emissions ")
+dev.off()

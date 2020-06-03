@@ -1,0 +1,7 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+sum <- aggregate(NEI$Emissions,by=list(year=NEI$year),FUN=sum) 
+png(filename = "plot7.png")
+sum <- aggregate(NEI$Emissions,by=list(year=NEI$year),FUN=sum) 
+plot(sum$year,sum$x,type = "l",main="Total Emmision of Baltimore City",ylab="total Emission of PM 2.5",xlab="year")
+dev.off()
